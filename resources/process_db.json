@@ -1,0 +1,1169 @@
+{
+  "system idle process": {
+    "description": "Shows how much of your CPU is doing nothing. It's not actually using resources — high CPU here means your system is idle.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — This is the CPU idle counter, not a real process.",
+    "kill_warning": "Cannot be terminated. This represents idle CPU time."
+  },
+  "system.exe": {
+    "description": "The Windows kernel itself — the core brain of your operating system that manages everything.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Instant blue screen crash (BSOD). Your PC will reboot.",
+    "kill_warning": "This is the core Windows kernel process. Terminating it will cause an immediate blue screen."
+  },
+  "system": {
+    "description": "The Windows kernel itself — the core brain of your operating system that manages everything.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Instant blue screen crash (BSOD). Your PC will reboot.",
+    "kill_warning": "This is the core Windows kernel process. Terminating it will cause an immediate blue screen."
+  },
+  "registry": {
+    "description": "Handles the Windows Registry — the central database that stores all system and app settings.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Could corrupt your system settings and crash Windows.",
+    "kill_warning": "Manages the Windows registry. Do not terminate."
+  },
+  "smss.exe": {
+    "description": "Session Manager — starts up your Windows sessions when you log in. Runs very early in the boot process.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Will crash Windows immediately.",
+    "kill_warning": "Manages Windows session creation. Killing this will crash the system."
+  },
+  "csrss.exe": {
+    "description": "Core Windows process that manages console windows (like Command Prompt) and creates threads for other programs.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Instant blue screen (BSOD). Windows cannot run without this.",
+    "kill_warning": "Core Windows subsystem process. Terminating it will cause a blue screen of death."
+  },
+  "wininit.exe": {
+    "description": "Runs once at startup to launch critical services like the Service Control Manager and Local Security Authority.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Will crash the operating system.",
+    "kill_warning": "Initializes the Windows environment. Cannot be safely terminated."
+  },
+  "winlogon.exe": {
+    "description": "Handles your login screen, Ctrl+Alt+Del, and switching between users. Always running while you're logged in.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — You'll be locked out of your session. Screen may go black.",
+    "kill_warning": "Manages user authentication. Killing this will lock you out of your session."
+  },
+  "services.exe": {
+    "description": "The master controller for all Windows services (background programs like networking, printing, updates, etc.).",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — All Windows services will stop. System will crash.",
+    "kill_warning": "Controls all Windows services. Terminating will crash the operating system."
+  },
+  "lsass.exe": {
+    "description": "Handles all login security — checks your passwords, manages encryption, and enforces security policies.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Forces an immediate restart. All users will be logged out.",
+    "kill_warning": "Handles all security authentication. Killing this forces an immediate restart."
+  },
+  "lsaiso.exe": {
+    "description": "A secure vault for your login credentials, running in an isolated container so malware can't steal passwords.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Breaks Credential Guard security protection.",
+    "kill_warning": "Protects credentials in a virtualized container. Do not terminate."
+  },
+  "dwm.exe": {
+    "description": "Desktop Window Manager — draws everything you see on screen: windows, transparency, animations, and visual effects.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Screen goes black. Desktop restarts automatically but you'll lose window positions.",
+    "kill_warning": "Renders the entire desktop. Killing it will cause the screen to go black and restart the shell."
+  },
+  "fontdrvhost.exe": {
+    "description": "Renders all the fonts (text) you see on screen. Runs in a sandbox for security.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Text may become unreadable or display may break.",
+    "kill_warning": "Handles font rendering. Terminating may cause display issues."
+  },
+  "ntoskrnl.exe": {
+    "description": "The actual Windows kernel file — handles memory, hardware, and everything at the deepest level of the OS.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — This IS Windows. Cannot be terminated.",
+    "kill_warning": "This IS the Windows kernel. Cannot be terminated."
+  },
+  "memory compression": {
+    "description": "Squeezes data in RAM to fit more in memory, so Windows doesn't have to use the slower hard drive as much.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — System memory management will break.",
+    "kill_warning": "System memory management process. Cannot be terminated."
+  },
+  "trustedinstaller.exe": {
+    "description": "Installs Windows updates and system components. Only runs when updates are being applied.",
+    "category": "system_critical",
+    "safe_to_kill": false,
+    "kill_impact": "DO NOT KILL — Can corrupt Windows Update and leave your system in a broken state.",
+    "kill_warning": "Installs system updates. Interrupting may corrupt Windows Update."
+  },
+  "svchost.exe": {
+    "description": "A container that runs one or more Windows services. Many copies run at once, each hosting different services.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "RISKY — Each svchost hosts different services. Killing the wrong one can break networking, audio, or updates.",
+    "kill_warning": "Hosts one or more Windows services. Check which services it hosts before terminating.",
+    "service_descriptions": {
+      "wuauserv": "Windows Update — Downloads and installs system updates",
+      "bits": "Background file downloader — Used by Windows Update to download files",
+      "dnscache": "DNS Client — Remembers website addresses so browsing is faster",
+      "audiosrv": "Audio Service — Makes your speakers and headphones work",
+      "audioendpointbuilder": "Audio Endpoint Builder — Detects and sets up audio devices",
+      "lanmanserver": "File Sharing — Lets other computers access your shared folders",
+      "lanmanworkstation": "Network Client — Connects you to shared folders on other computers",
+      "schedule": "Task Scheduler — Runs programs at scheduled times (backups, updates, etc.)",
+      "eventlog": "Event Logger — Records system events for troubleshooting",
+      "plugplay": "Plug and Play — Detects when you plug in new hardware (USB, etc.)",
+      "power": "Power Manager — Handles sleep, hibernate, and battery settings",
+      "spooler": "Print Spooler — Manages your print jobs",
+      "themes": "Themes Service — Makes your desktop look pretty (colors, wallpaper, etc.)",
+      "winmgmt": "WMI Service — Lets programs query system info (used by many tools)",
+      "cryptsvc": "Crypto Service — Manages security certificates and code signing",
+      "netprofm": "Network List — Identifies which network you're connected to",
+      "nsi": "Network Store — Keeps track of network configuration",
+      "dhcp": "DHCP Client — Gets your computer's IP address automatically",
+      "mpssvc": "Windows Firewall — Blocks unauthorized network connections",
+      "bfe": "Firewall Engine — The core engine behind Windows Firewall",
+      "diagtrack": "Telemetry — Sends diagnostic data to Microsoft (can be disabled in Settings)",
+      "dosvc": "Delivery Optimization — Downloads updates from nearby PCs to save bandwidth",
+      "sysmain": "SysMain (Superfetch) — Pre-loads apps you use often so they open faster",
+      "wlansvc": "Wi-Fi Service — Manages your wireless network connections",
+      "netman": "Network Manager — Manages all your network connections",
+      "iphlpsvc": "IP Helper — Handles IPv6 and network tunneling",
+      "pcasvc": "Compatibility Assistant — Helps old programs run on new Windows",
+      "shellhwdetection": "AutoPlay — Pops up options when you insert USB drives or discs",
+      "usosvc": "Update Orchestrator — Manages the timing and scheduling of Windows Updates",
+      "wpnservice": "Push Notifications — Delivers notifications from Windows and apps",
+      "camsvc": "Permission Manager — Controls which apps can use your camera, microphone, etc.",
+      "cbdhsvc": "Clipboard Sync — Syncs your clipboard between devices",
+      "dps": "Diagnostic Service — Automatically diagnoses common Windows problems",
+      "storagesvc": "Storage Service — Manages drives and storage spaces",
+      "tabletinputservice": "Touch Keyboard — Provides the on-screen keyboard and handwriting input",
+      "tokenbroker": "Account Manager — Manages Microsoft account login tokens",
+      "wersvc": "Error Reporting — Sends crash reports to Microsoft",
+      "wisvc": "Insider Service — Manages Windows Insider Preview builds",
+      "lfsvc": "Location Service — Provides your location to apps that request it",
+      "licensemgr": "License Manager — Manages Windows and Store app licenses",
+      "statesvc": "State Service — Saves and restores app state (window positions, etc.)",
+      "tiledatamodelsvc": "Start Menu Tiles — Manages the tiles/pins on your Start menu",
+      "dispbrokerdesktopsvc": "Display Policy — Manages display settings and screen layout",
+      "profiling": "Windows Profiling — Collects performance data for optimization",
+      "wecsvc": "Event Collector — Gathers event logs from remote computers"
+    }
+  },
+  "explorer.exe": {
+    "description": "Your desktop, taskbar, Start button, and File Explorer — the main shell you interact with every day.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Taskbar and desktop icons disappear. It usually auto-restarts within seconds.",
+    "kill_warning": "This is the Windows shell (taskbar, desktop, file explorer). Killing it removes the taskbar and desktop icons. It will auto-restart."
+  },
+  "taskmgr.exe": {
+    "description": "The built-in Windows Task Manager. The one you open with Ctrl+Shift+Esc.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Just closes the Task Manager window. No harm done."
+  },
+  "sihost.exe": {
+    "description": "Supports the Start menu, Action Center (notifications), and other shell features behind the scenes.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Start menu and notifications may stop working until restart.",
+    "kill_warning": "Provides shell infrastructure for the Start menu and notification area."
+  },
+  "taskhostw.exe": {
+    "description": "Runs scheduled tasks and maintenance jobs in the background (like disk cleanup, defrag, etc.).",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Scheduled maintenance tasks will be interrupted. Usually auto-restarts.",
+    "kill_warning": "Executes scheduled tasks. Killing may prevent important maintenance tasks."
+  },
+  "runtimebroker.exe": {
+    "description": "Permission guard for Microsoft Store apps — decides if they can access your camera, location, etc.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Store apps might glitch briefly. It restarts automatically.",
+    "kill_warning": "Manages UWP app permissions. Will restart automatically if needed."
+  },
+  "ctfmon.exe": {
+    "description": "Handles your keyboard input, language switching, and the language bar in the taskbar.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Keyboard input might stop briefly. Restarts automatically.",
+    "kill_warning": "Handles text input services. Killing may affect keyboard input temporarily."
+  },
+  "conhost.exe": {
+    "description": "Draws the window for Command Prompt and other console programs. One per open console window.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Just closes that specific console window."
+  },
+  "dllhost.exe": {
+    "description": "COM Surrogate — generates thumbnails for files in File Explorer and hosts certain system components.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File Explorer thumbnails may stop loading briefly. Restarts on its own.",
+    "kill_warning": "Hosts COM components like thumbnail generators. Safe to kill but may restart."
+  },
+  "searchhost.exe": {
+    "description": "Powers the Windows Search box in the taskbar. Lets you search for files, apps, and settings.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search bar stops working temporarily. Restarts automatically.",
+    "kill_warning": "Powers Windows Search. Killing will temporarily disable search functionality."
+  },
+  "searchindexer.exe": {
+    "description": "Scans your files in the background to build a search index, so searches are fast.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search results may be slower/incomplete until it restarts and re-indexes.",
+    "kill_warning": "Indexes files for search. Killing stops indexing until service restarts."
+  },
+  "securityhealthservice.exe": {
+    "description": "Monitors your system security status — checks if antivirus, firewall, and updates are working.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Windows Security health monitoring stops. Won't alert you to security issues.",
+    "kill_warning": "Part of Windows Security. Killing disables health monitoring."
+  },
+  "securityhealthsystray.exe": {
+    "description": "The little shield icon in your system tray that shows Windows Security status.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Just removes the shield icon from the tray. Security still works."
+  },
+  "msmpeng.exe": {
+    "description": "Windows Defender antivirus engine — actively scans files and monitors for malware in real time.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "DANGEROUS — Real-time virus protection stops. Your PC is unprotected until it restarts.",
+    "kill_warning": "Windows Defender real-time protection. Killing leaves system unprotected."
+  },
+  "mpcmdrun.exe": {
+    "description": "Windows Defender's command-line tool — runs scans and updates when triggered.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Just stops the current scan or update check."
+  },
+  "nissrv.exe": {
+    "description": "Windows Defender's network inspector — watches network traffic for threats and exploits.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Network threat detection stops. Reduces your security.",
+    "kill_warning": "Network threat protection. Disabling reduces security."
+  },
+  "smartscreen.exe": {
+    "description": "Checks downloaded files and websites against Microsoft's database of known threats.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Download/website safety checks stop temporarily. Restarts when needed.",
+    "kill_warning": "Provides web filtering protection. Will restart when needed."
+  },
+  "spoolsv.exe": {
+    "description": "Print Spooler — queues up your print jobs and sends them to your printer one at a time.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — All current print jobs are lost. Printing won't work until you restart the service.",
+    "kill_warning": "Manages printing. Killing will cancel all print jobs."
+  },
+  "wlanext.exe": {
+    "description": "Wi-Fi driver helper — works with your wireless card's driver to manage Wi-Fi connections.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — You may lose your Wi-Fi connection.",
+    "kill_warning": "Supports Wi-Fi connectivity. Killing may disconnect Wi-Fi."
+  },
+  "audiodg.exe": {
+    "description": "Audio engine — processes all sound from your speakers and headphones. Applies audio effects.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — All sound stops immediately. Restarts automatically within seconds.",
+    "kill_warning": "Processes all audio. Killing will cause audio to stop until it restarts."
+  },
+  "wudfhost.exe": {
+    "description": "Runs device drivers in user mode (safer than kernel mode) — handles USB, sensors, and other hardware.",
+    "category": "windows_service",
+    "safe_to_kill": false,
+    "kill_impact": "CAUTION — Hardware devices (USB, sensors, etc.) may stop working.",
+    "kill_warning": "Hosts device drivers. Killing may cause hardware to stop working."
+  },
+  "wmiprvse.exe": {
+    "description": "WMI Provider — answers system information queries from programs and scripts.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — System management tools may glitch briefly. Restarts on demand.",
+    "kill_warning": "Handles system management queries. Will restart on demand."
+  },
+  "dashost.exe": {
+    "description": "Device pairing helper — assists with connecting Bluetooth and wireless devices.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — New device pairing won't work temporarily. Already-paired devices are fine."
+  },
+  "msiexec.exe": {
+    "description": "Windows Installer — actively installing, updating, or removing software right now.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — If killed during an install, the app may be left in a broken/partial state.",
+    "kill_warning": "Handles software installation. Killing during install may corrupt the application."
+  },
+  "msedge.exe": {
+    "description": "Microsoft Edge web browser — each tab and extension runs as a separate process.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Edge. You may lose unsaved form data in open tabs."
+  },
+  "chrome.exe": {
+    "description": "Google Chrome web browser — each tab, extension, and plugin runs as its own process.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Chrome. You may lose unsaved form data. Tabs are recoverable on relaunch."
+  },
+  "firefox.exe": {
+    "description": "Mozilla Firefox web browser — your tabs and browsing session.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Firefox. Session is usually restored on relaunch."
+  },
+  "brave.exe": {
+    "description": "Brave browser — privacy-focused web browser based on Chromium.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Brave. Tabs are recoverable on relaunch."
+  },
+  "opera.exe": {
+    "description": "Opera browser — web browser with built-in VPN and ad blocker.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Opera."
+  },
+  "code.exe": {
+    "description": "Visual Studio Code — popular code editor by Microsoft. Used for programming.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes VS Code. Unsaved files are usually recovered on relaunch."
+  },
+  "devenv.exe": {
+    "description": "Microsoft Visual Studio — full IDE for software development (.NET, C++, etc.).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Visual Studio. Save your work first."
+  },
+  "python.exe": {
+    "description": "Python program running — could be a script, server, or application written in Python.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops the Python script. Check if it's doing something important first."
+  },
+  "pythonw.exe": {
+    "description": "Python program running without a console window — often a GUI app or background script.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops the Python program."
+  },
+  "node.exe": {
+    "description": "Node.js — running a JavaScript application, usually a web server or dev tool.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops the Node.js application. If it's a dev server, your website preview stops."
+  },
+  "java.exe": {
+    "description": "Java application — could be Minecraft, an IDE, a server, or any Java-based program.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops the Java app. Save your work in the app first."
+  },
+  "javaw.exe": {
+    "description": "Java application running without a console window — often a GUI program like Minecraft or Eclipse.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops the Java app."
+  },
+  "notepad.exe": {
+    "description": "Windows Notepad — simple text editor.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Notepad. Unsaved text is lost."
+  },
+  "notepad++.exe": {
+    "description": "Notepad++ — advanced text editor popular with programmers.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Notepad++. It usually recovers unsaved tabs on relaunch."
+  },
+  "winword.exe": {
+    "description": "Microsoft Word — document editor. You may have an open document with unsaved changes.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Word. AutoRecover usually saves recent changes."
+  },
+  "excel.exe": {
+    "description": "Microsoft Excel — spreadsheet application. May have unsaved work.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Excel. AutoRecover usually saves recent changes."
+  },
+  "powerpnt.exe": {
+    "description": "Microsoft PowerPoint — presentation editor.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes PowerPoint. Save your presentation first."
+  },
+  "outlook.exe": {
+    "description": "Microsoft Outlook — email, calendar, and contacts. May be sending or receiving mail.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Outlook. Emails being composed are saved as drafts."
+  },
+  "teams.exe": {
+    "description": "Microsoft Teams — chat, video calls, and file sharing for work or school.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Ends any active calls/meetings. You'll appear offline."
+  },
+  "slack.exe": {
+    "description": "Slack — team messaging and collaboration app.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — You'll appear offline. Messages are saved on the server."
+  },
+  "discord.exe": {
+    "description": "Discord — voice chat, text messaging, and community platform.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Disconnects from voice channels. You'll appear offline."
+  },
+  "spotify.exe": {
+    "description": "Spotify — music and podcast streaming. Currently playing or running in background.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Music stops. Reopen to resume listening."
+  },
+  "steam.exe": {
+    "description": "Steam — game store, library, and launcher by Valve. Manages your game collection.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Steam. Any game downloads are paused (resume on relaunch)."
+  },
+  "steamwebhelper.exe": {
+    "description": "Steam's built-in web browser — powers the Steam store, community, and overlay.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Steam's browser features stop. Steam itself keeps running."
+  },
+  "epicgameslauncher.exe": {
+    "description": "Epic Games Launcher — game store and library for Fortnite, etc.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes Epic Games. Downloads are paused."
+  },
+  "vlc.exe": {
+    "description": "VLC Media Player — playing a video or audio file.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Playback stops."
+  },
+  "wmplayer.exe": {
+    "description": "Windows Media Player — playing media files.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Playback stops."
+  },
+  "mspaint.exe": {
+    "description": "Microsoft Paint — simple image editor.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved artwork is lost."
+  },
+  "snippingtool.exe": {
+    "description": "Snipping Tool — screenshot and screen recording utility.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Current screenshot is lost if unsaved."
+  },
+  "calc.exe": {
+    "description": "Windows Calculator app.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — No data to lose."
+  },
+  "cmd.exe": {
+    "description": "Command Prompt — the classic Windows command-line interface.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the command window. Running commands are terminated."
+  },
+  "powershell.exe": {
+    "description": "Windows PowerShell — advanced command-line shell for system administration.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes PowerShell. Running scripts are terminated."
+  },
+  "pwsh.exe": {
+    "description": "PowerShell 7+ — the modern cross-platform version of PowerShell.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes PowerShell. Running scripts are terminated."
+  },
+  "windowsterminal.exe": {
+    "description": "Windows Terminal — modern terminal app that can run CMD, PowerShell, and WSL in tabs.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes all terminal tabs and running commands."
+  },
+  "openssh.exe": {
+    "description": "OpenSSH — secure remote connection to another computer.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Disconnects the SSH session."
+  },
+  "git.exe": {
+    "description": "Git — version control. Probably running a git command (pull, push, clone, etc.).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — The git operation stops. May leave a lock file you need to delete."
+  },
+  "msedgewebview2.exe": {
+    "description": "Edge WebView2 — an embedded browser used by other apps to show web content (Teams, Widgets, etc.).",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — The app using it may lose its web content display."
+  },
+  "applicationframehost.exe": {
+    "description": "Hosts the window frame for Microsoft Store (UWP) apps like Calculator, Photos, Settings.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — UWP apps may close. They reopen normally."
+  },
+  "textinputhost.exe": {
+    "description": "Provides the touch keyboard, emoji picker (Win+.), and handwriting input panel.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Emoji picker and touch keyboard stop working temporarily."
+  },
+  "startmenuexperiencehost.exe": {
+    "description": "The Windows Start menu — what you see when you click the Start button.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Start menu disappears briefly, then auto-restarts.",
+    "kill_warning": "Hosts the Start menu. It will auto-restart but Start menu will be briefly unavailable."
+  },
+  "shellexperiencehost.exe": {
+    "description": "Handles the visual experience of the taskbar, Start menu, and Action Center.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Taskbar visuals glitch briefly, then auto-restart.",
+    "kill_warning": "Handles taskbar and notification visuals. Will restart automatically."
+  },
+  "widgets.exe": {
+    "description": "Windows Widgets panel — the news, weather, and widget board you access from the taskbar.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Widgets panel closes. No important data lost."
+  },
+  "phoneexperiencehost.exe": {
+    "description": "Phone Link — lets you see phone notifications, texts, and photos on your PC.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Phone link features stop. Reopen the app to reconnect."
+  },
+  "yourphone.exe": {
+    "description": "Phone Link (older name: Your Phone) — connects your Android phone to your PC.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Phone connection stops."
+  },
+  "gamebar.exe": {
+    "description": "Xbox Game Bar — the overlay you open with Win+G for screenshots, recording, and performance stats.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Game bar closes. No impact on games."
+  },
+  "gamebarftserver.exe": {
+    "description": "Xbox Game Bar background service — supports Game Bar features.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Game Bar features may not work until restarted."
+  },
+  "gamingservices.exe": {
+    "description": "Xbox Gaming Services — supports Game Pass, achievements, and Xbox integration.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Xbox features stop. Games keep running."
+  },
+  "lockapp.exe": {
+    "description": "The Windows lock screen — shows clock, date, and notifications when your PC is locked.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Lock screen may look plain next time. Restarts automatically."
+  },
+  "systemsettings.exe": {
+    "description": "Windows Settings app — where you change system preferences.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Settings window closes. Unsaved changes are lost."
+  },
+  "settingsynchost.exe": {
+    "description": "Syncs your Windows settings (theme, passwords, etc.) to your Microsoft account across devices.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Settings stop syncing temporarily."
+  },
+  "onedrive.exe": {
+    "description": "Microsoft OneDrive — syncs your files to the cloud. Running in background.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File syncing stops. Files already on your PC are fine. Reopen to resume sync."
+  },
+  "mspcmanager.exe": {
+    "description": "Microsoft PC Manager — system cleanup and optimization tool by Microsoft.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the tool."
+  },
+  "7zfm.exe": {
+    "description": "7-Zip File Manager — open-source archive tool for ZIP, RAR, 7z files.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops any active compression/extraction."
+  },
+  "winrar.exe": {
+    "description": "WinRAR — archive manager for ZIP and RAR files.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Stops any active compression/extraction."
+  },
+  "obs64.exe": {
+    "description": "OBS Studio — screen recording and live streaming software.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Recording/streaming stops. Current recording file may be incomplete."
+  },
+  "gimp-2.10.exe": {
+    "description": "GIMP — free and open-source image editor (like Photoshop).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved image edits are lost."
+  },
+  "photoshop.exe": {
+    "description": "Adobe Photoshop — professional image editing software.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved edits lost. Photoshop may recover some via auto-save."
+  },
+  "afterfx.exe": {
+    "description": "Adobe After Effects — motion graphics and visual effects.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved project changes are lost. Any render in progress stops."
+  },
+  "premiere pro.exe": {
+    "description": "Adobe Premiere Pro — professional video editing software.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved edits lost. Auto-save may recover some work."
+  },
+  "acrobat.exe": {
+    "description": "Adobe Acrobat — PDF editor and creator.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Unsaved PDF edits are lost."
+  },
+  "acrord32.exe": {
+    "description": "Adobe Acrobat Reader — PDF viewer (read-only).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Just closes the PDF viewer."
+  },
+  "ccxprocess.exe": {
+    "description": "Adobe Creative Cloud background process — manages Adobe app updates and licensing.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Adobe update checks stop. Your Adobe apps keep working."
+  },
+  "cclibrary.exe": {
+    "description": "Adobe Creative Cloud Library — syncs assets (fonts, colors, etc.) across Adobe apps.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Library syncing stops. Local assets still available."
+  },
+  "adobeipcbroker.exe": {
+    "description": "Adobe IPC Broker — lets Adobe apps communicate with each other.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Cross-app Adobe features may not work until restarted."
+  },
+  "nvidiacontainer.exe": {
+    "description": "NVIDIA Container — background service for your NVIDIA GPU drivers and features.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — GPU monitoring and some NVIDIA features stop. Games keep working.",
+    "kill_warning": "NVIDIA driver services. Killing may affect GPU monitoring features."
+  },
+  "nvdisplay.container.exe": {
+    "description": "NVIDIA Display Container — manages display driver settings and multiple monitors.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Display settings may reset temporarily."
+  },
+  "nvsphelper64.exe": {
+    "description": "NVIDIA 3D Vision helper — supports stereoscopic 3D (rarely used now).",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — No impact unless you use 3D Vision."
+  },
+  "nvidia share.exe": {
+    "description": "NVIDIA ShadowPlay/Share — game recording, instant replay, and streaming overlay.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Game recording/replay stops."
+  },
+  "nvidia web helper.exe": {
+    "description": "NVIDIA GeForce Experience web component — powers the GeForce Experience interface.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — GeForce Experience UI may not work until restarted."
+  },
+  "amdrsserv.exe": {
+    "description": "AMD Radeon Software Service — background service for AMD GPU drivers.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — AMD software features stop. Games keep working."
+  },
+  "amddvr.exe": {
+    "description": "AMD ReLive — game recording and streaming for AMD GPUs.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Game recording stops."
+  },
+  "razer synapse 3.exe": {
+    "description": "Razer Synapse — configures your Razer mouse, keyboard, and other peripherals.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Custom keybinds/lighting revert to defaults until reopened."
+  },
+  "icue.exe": {
+    "description": "Corsair iCUE — controls RGB lighting and settings for Corsair peripherals.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — RGB lighting and custom settings revert to defaults."
+  },
+  "logitechg hub.exe": {
+    "description": "Logitech G Hub — configures Logitech gaming mice, keyboards, and headsets.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Custom button mappings and lighting revert to defaults."
+  },
+  "dropbox.exe": {
+    "description": "Dropbox — syncs your Dropbox files between your PC and the cloud.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File syncing stops. Local files are untouched."
+  },
+  "googledrivesync.exe": {
+    "description": "Google Drive — syncs your Google Drive files to your PC.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File syncing stops."
+  },
+  "zoom.exe": {
+    "description": "Zoom — video conferencing and meetings.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Ends any active meeting/call."
+  },
+  "skype.exe": {
+    "description": "Skype — voice and video calling.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Ends any active call."
+  },
+  "telegram.exe": {
+    "description": "Telegram — encrypted messaging app.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — You go offline. Messages are saved on Telegram's servers."
+  },
+  "thunderbird.exe": {
+    "description": "Mozilla Thunderbird — email client.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes email client. Emails being composed may be saved as drafts."
+  },
+  "filezilla.exe": {
+    "description": "FileZilla — FTP/SFTP file transfer client.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Active file transfers are interrupted."
+  },
+  "putty.exe": {
+    "description": "PuTTY — SSH terminal for connecting to remote servers.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Disconnects from the remote server."
+  },
+  "winscp.exe": {
+    "description": "WinSCP — secure file transfer (SFTP/SCP) client.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Active file transfers are interrupted."
+  },
+  "docker desktop.exe": {
+    "description": "Docker Desktop — runs and manages Docker containers (virtual app environments).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — All running Docker containers will stop.",
+    "kill_warning": "Stopping Docker Desktop will stop all running containers."
+  },
+  "vmware.exe": {
+    "description": "VMware Workstation — runs virtual machines (full operating systems inside Windows).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — Running VMs may lose unsaved work. Suspend VMs first.",
+    "kill_warning": "VMs may be affected. Save VM state first."
+  },
+  "virtualbox.exe": {
+    "description": "VirtualBox — runs virtual machines (similar to VMware, but free).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — Running VMs may lose unsaved work."
+  },
+  "wsl.exe": {
+    "description": "Windows Subsystem for Linux — runs a Linux environment inside Windows.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Linux environment shuts down. Reopen to restart."
+  },
+  "systemsettingsbroker.exe": {
+    "description": "Bridges UWP app settings with the Windows system settings.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Settings changes may not apply until restarted."
+  },
+  "backgroundtaskhost.exe": {
+    "description": "Runs background tasks for Store apps — like live tile updates and notifications.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — App background tasks stop. They restart as needed."
+  },
+  "compattelrunner.exe": {
+    "description": "Windows Telemetry — collects diagnostic data about your system for Microsoft.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Data collection stops. No impact on your experience."
+  },
+  "musnotification.exe": {
+    "description": "Windows Update reminder — the popup that nags you to restart for updates.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — The restart nag goes away (temporarily)."
+  },
+  "crashpad_handler.exe": {
+    "description": "Crash reporter for Chrome-based apps — sends crash data to developers.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Crash reports won't be sent. No other effect."
+  },
+  "updater.exe": {
+    "description": "Auto-updater for an application — checking for or downloading updates.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — That app's update check stops."
+  },
+  "searchapp.exe": {
+    "description": "Windows Search app — the search UI in the taskbar.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search bar stops working temporarily. Restarts automatically."
+  },
+  "searchui.exe": {
+    "description": "Windows Search UI — the search interface in the taskbar (older Windows 10 name).",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search stops briefly, then restarts."
+  },
+  "searchprotocolhost.exe": {
+    "description": "Search Protocol Host — helps Windows Search access and index different file types.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search indexing pauses. Restarts on its own."
+  },
+  "searchfilterhost.exe": {
+    "description": "Search Filter Host — processes file content so Windows Search can search inside documents.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File content indexing pauses."
+  },
+  "sppextcomobj.exe": {
+    "description": "Software Protection Platform — verifies your Windows license is valid.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — License check stops. Windows may re-check later."
+  },
+  "wermgr.exe": {
+    "description": "Windows Error Reporting Manager — collects and sends crash/error reports.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Error reports aren't sent. No other impact."
+  },
+  "prevhost.exe": {
+    "description": "Preview Handler Host — generates file previews in File Explorer's preview pane.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File previews stop working in Explorer. Restarts as needed."
+  },
+  "rundll32.exe": {
+    "description": "Runs a function inside a DLL file — often used for Control Panel items and system tasks.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — The specific system task it's running stops."
+  },
+  "usoclient.exe": {
+    "description": "Update Session Orchestrator — manages the flow of Windows Updates.",
+    "category": "windows_service",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Current update check stops."
+  },
+  "microsoftedgeupdate.exe": {
+    "description": "Microsoft Edge auto-updater — checks for and installs Edge updates.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Edge update stops. Edge keeps working."
+  },
+  "googleupdate.exe": {
+    "description": "Google Update — checks for updates for Chrome and other Google products.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Google update check stops."
+  },
+  "googledrivefs.exe": {
+    "description": "Google Drive File Stream — mounts your Google Drive as a drive letter on your PC.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Google Drive virtual drive disappears. Local files unaffected."
+  },
+  "officeclicktorun.exe": {
+    "description": "Microsoft Office Click-to-Run — manages Office installation and updates.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Office update stops. Office apps keep working."
+  },
+  "officec2rclient.exe": {
+    "description": "Microsoft Office update client — downloading or applying Office updates.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Office update interrupted."
+  },
+  "everything.exe": {
+    "description": "Everything Search — instant file search tool (much faster than Windows Search).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Search tool closes."
+  },
+  "whatsapp.exe": {
+    "description": "WhatsApp Desktop — messaging app linked to your phone.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — You go offline on desktop. Messages still go to your phone."
+  },
+  "signal.exe": {
+    "description": "Signal Desktop — encrypted messaging app.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — You go offline on desktop."
+  },
+  "cursor.exe": {
+    "description": "Cursor — AI-powered code editor based on VS Code.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the editor. Unsaved files usually recovered on relaunch."
+  },
+  "rider64.exe": {
+    "description": "JetBrains Rider — .NET/C# IDE.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the IDE. Save your work first."
+  },
+  "idea64.exe": {
+    "description": "JetBrains IntelliJ IDEA — Java/Kotlin IDE.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the IDE. Save your work first."
+  },
+  "pycharm64.exe": {
+    "description": "JetBrains PyCharm — Python IDE.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the IDE. Save your work first."
+  },
+  "webstorm64.exe": {
+    "description": "JetBrains WebStorm — JavaScript/TypeScript IDE.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes the IDE."
+  },
+  "sublime_text.exe": {
+    "description": "Sublime Text — fast, lightweight code editor.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Closes editor. Hot exit usually preserves unsaved files."
+  },
+  "dopus.exe": {
+    "description": "Directory Opus — advanced file manager (File Explorer alternative).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File manager closes."
+  },
+  "totalcmd.exe": {
+    "description": "Total Commander — dual-pane file manager.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — File manager closes."
+  },
+  "hwmonitor.exe": {
+    "description": "HWMonitor — shows CPU/GPU temperatures, fan speeds, and voltages.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Hardware monitoring stops."
+  },
+  "cpuz.exe": {
+    "description": "CPU-Z — shows detailed CPU, memory, and motherboard information.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Info tool closes."
+  },
+  "gpuz.exe": {
+    "description": "GPU-Z — shows detailed graphics card information and sensor data.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Info tool closes."
+  },
+  "mstsc.exe": {
+    "description": "Remote Desktop Connection — connected to another computer remotely.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Disconnects from the remote computer. Work on remote PC is preserved."
+  },
+  "mmc.exe": {
+    "description": "Microsoft Management Console — hosts admin tools like Device Manager, Disk Management, etc.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Admin tool window closes."
+  },
+  "regedit.exe": {
+    "description": "Registry Editor — tool for viewing and editing the Windows Registry.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Editor closes. Any unsaved changes are lost."
+  },
+  "perfmon.exe": {
+    "description": "Performance Monitor — shows detailed performance counters and system diagnostics.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Monitoring stops."
+  },
+  "resmon.exe": {
+    "description": "Resource Monitor — shows detailed CPU, memory, disk, and network usage per process.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Monitoring tool closes."
+  },
+  "dxdiag.exe": {
+    "description": "DirectX Diagnostics — shows display, sound, and input device information.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Diagnostic tool closes."
+  },
+  "lghub_agent.exe": {
+    "description": "Logitech G Hub Agent — background service for Logitech peripheral settings.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Logitech customizations may revert to defaults."
+  },
+  "wallpaperengine32.exe": {
+    "description": "Wallpaper Engine — animated/interactive desktop wallpapers.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Animated wallpaper stops. Desktop goes to static wallpaper."
+  },
+  "wallpaperengine64.exe": {
+    "description": "Wallpaper Engine (64-bit) — animated/interactive desktop wallpapers.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Animated wallpaper stops."
+  },
+  "malwarebytes.exe": {
+    "description": "Malwarebytes — anti-malware protection running in the background.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "CAUTION — Malware protection stops. You lose real-time scanning."
+  },
+  "avgui.exe": {
+    "description": "AVG Antivirus — user interface for AVG protection.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — AVG UI closes but protection service usually keeps running."
+  },
+  "avastui.exe": {
+    "description": "Avast Antivirus — user interface for Avast protection.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Avast UI closes but protection service usually keeps running."
+  },
+  "powertoys.exe": {
+    "description": "Microsoft PowerToys — collection of utility tools (FancyZones, PowerRename, etc.).",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — All PowerToys features stop (FancyZones, Color Picker, etc.)."
+  },
+  "autohotkey.exe": {
+    "description": "AutoHotkey — running a custom keyboard/mouse automation script.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Custom hotkeys and macros stop working."
+  },
+  "flux.exe": {
+    "description": "f.lux — adjusts screen color temperature at night to reduce eye strain.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Night mode color filter turns off."
+  },
+  "sharex.exe": {
+    "description": "ShareX — screenshot and screen recording tool.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Screenshot hotkeys stop working."
+  },
+  "barrier.exe": {
+    "description": "Barrier — software KVM switch that lets you share keyboard/mouse between PCs.",
+    "category": "user_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — Keyboard/mouse sharing between PCs stops."
+  },
+  "ssh-agent.exe": {
+    "description": "SSH Agent — stores your SSH keys in memory so you don't have to type passwords repeatedly.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — You'll need to re-enter SSH key passwords for new connections."
+  },
+  "gpg-agent.exe": {
+    "description": "GPG Agent — manages your GPG encryption keys.",
+    "category": "background_app",
+    "safe_to_kill": true,
+    "kill_impact": "Safe — GPG signing/encryption requires re-entering passphrase."
+  }
+}
